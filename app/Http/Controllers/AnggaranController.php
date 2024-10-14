@@ -34,7 +34,7 @@ class AnggaranController extends Controller
     {
         $anggaran = Anggaran::create($request->all());
         // return redirect()->route("anggaran.index")->with("success","");
-        return response()->json($anggaran);
+        return response()->json($anggaran)->with("success","");
     }
 
     /**
@@ -43,8 +43,9 @@ class AnggaranController extends Controller
     public function show(string $id)
     {
         $anggaran = Anggaran::find($id);
+        if (!$anggaran) return response()->json(null,404);
         // return view("anggaran.show", compact("anggaran"));
-        return response()->json(($anggaran) ? $anggaran : null,404);
+        return response()->json($anggaran);
     }
 
     /**
@@ -53,8 +54,9 @@ class AnggaranController extends Controller
     public function edit(string $id)
     {
         $anggaran = Anggaran::find($id);
+        if (!$anggaran) return response()->json(null,404);
         // return view("anggaran.edit", compact("anggaran"));
-        return response()->json(($anggaran) ? $anggaran : null,404);
+        return response()->json($anggaran);
     }
 
     /**
@@ -63,9 +65,10 @@ class AnggaranController extends Controller
     public function update(Request $request, string $id)
     {
         $anggaran = Anggaran::find($id);
+        if (!$anggaran) return response()->json(null,404);
         $anggaran->update($request->all());
         // return redirect()->route("anggaran.index")->with("success","");
-        return response()->json(($anggaran) ? $anggaran : null,404);
+        return response()->json($anggaran)->with("success","");
     }
 
     /**
@@ -74,8 +77,9 @@ class AnggaranController extends Controller
     public function destroy(string $id)
     {
         $anggaran = Anggaran::find($id);
+        if (!$anggaran) return response()->json(null,404);
         $anggaran->delete();
         // return redirect()->route("anggaran.index")->with("success","");
-        return response()->json(($anggaran) ? $anggaran : null,404);
+        return response()->json(null)->with("success","");
     }
 }

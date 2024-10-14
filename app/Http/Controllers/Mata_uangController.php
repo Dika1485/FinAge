@@ -33,7 +33,7 @@ class Mata_uangController extends Controller
     {
         $mata_uang = Mata_uang::create($request->all());
         // return redirect()->route("mata_uang.index")->with("success","");
-        return response()->json($mata_uang);
+        return response()->json($mata_uang)->with("success","");
     }
 
     /**
@@ -42,8 +42,9 @@ class Mata_uangController extends Controller
     public function show(string $id)
     {
         $mata_uang = Mata_uang::find($id);
+        if (!$mata_uang) return response()->json(null,404);
         // return view("mata_uang.show", compact("mata_uang"));
-        return response()->json(($mata_uang) ? $mata_uang : null,404);
+        return response()->json($mata_uang);
     }
 
     /**
@@ -52,8 +53,9 @@ class Mata_uangController extends Controller
     public function edit(string $id)
     {
         $mata_uang = Mata_uang::find($id);
+        if (!$mata_uang) return response()->json(null,404);
         // return view("mata_uang.edit", compact("mata_uang"));
-        return response()->json(($mata_uang) ? $mata_uang : null,404);
+        return response()->json($mata_uang);
     }
 
     /**
@@ -62,9 +64,10 @@ class Mata_uangController extends Controller
     public function update(Request $request, string $id)
     {
         $mata_uang = Mata_uang::find($id);
+        if (!$mata_uang) return response()->json(null,404);
         $mata_uang->update($request->all());
         // return redirect()->route("mata_uang.index")->with("success","");
-        return response()->json(($mata_uang) ? $mata_uang : null,404);
+        return response()->json($mata_uang)->with("success","");
     }
 
     /**
@@ -73,8 +76,9 @@ class Mata_uangController extends Controller
     public function destroy(string $id)
     {
         $mata_uang = Mata_uang::find($id);
+        if (!$mata_uang) return response()->json(null,404);
         $mata_uang->delete();
         // return redirect()->route("mata_uang.index")->with("success","");
-        return response()->json(($mata_uang) ? $mata_uang : null,404);
+        return response()->json(null)->with("success","");
     }
 }

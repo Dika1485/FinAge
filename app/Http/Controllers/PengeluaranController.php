@@ -42,8 +42,9 @@ class PengeluaranController extends Controller
     public function show(string $id)
     {
         $pengeluaran = Pengeluaran::find($id);
+        if (!$pengeluaran) return response()->json(null,404);
         // return view("pengeluaran.show", compact("pengeluaran"));
-        return response()->json(($pengeluaran) ? $pengeluaran : null,404);
+        return response()->json($pengeluaran);
     }
 
     /**
@@ -52,8 +53,9 @@ class PengeluaranController extends Controller
     public function edit(string $id)
     {
         $pengeluaran = Pengeluaran::find($id);
+        if (!$pengeluaran) return response()->json(null,404);
         // return view("pengeluaran.edit", compact("pengeluaran"));
-        return response()->json(($pengeluaran) ? $pengeluaran : null,404);
+        return response()->json($pengeluaran);
     }
 
     /**
@@ -62,9 +64,10 @@ class PengeluaranController extends Controller
     public function update(Request $request, string $id)
     {
         $pengeluaran = Pengeluaran::find($id);
+        if (!$pengeluaran) return response()->json(null,404);
         $pengeluaran->update($request->all());
         // return redirect()->route("pengeluaran.index")->with("success","");
-        return response()->json(($pengeluaran) ? $pengeluaran : null,404);
+        return response()->json($pengeluaran)->with("success","");
     }
 
     /**
@@ -73,8 +76,9 @@ class PengeluaranController extends Controller
     public function destroy(string $id)
     {
         $pengeluaran = Pengeluaran::find($id);
+        if (!$pengeluaran) return response()->json(null,404);
         $pengeluaran->delete();
         // return redirect()->route("pengeluaran.index")->with("success","");
-        return response()->json(($pengeluaran) ? $pengeluaran : null,404);
+        return response()->json(null)->with("success","");
     }
 }

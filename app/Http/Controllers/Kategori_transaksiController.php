@@ -33,7 +33,7 @@ class Kategori_transaksiController extends Controller
     {
         $kategori_transaksi = Kategori_transaksi::create($request->all());
         // return redirect()->route("kategori_transaksi.index")->with("success","");
-        return response()->json($kategori_transaksi);
+        return response()->json($kategori_transaksi)->with("success","");
     }
 
     /**
@@ -42,8 +42,9 @@ class Kategori_transaksiController extends Controller
     public function show(string $id)
     {
         $kategori_transaksi = Kategori_transaksi::find($id);
+        if (!$kategori_transaksi) return response()->json(null,404);
         // return view("kategori_transaksi.show", compact("kategori_transaksi"));
-        return response()->json(($kategori_transaksi) ? $kategori_transaksi : null,404);
+        return response()->json($kategori_transaksi);
     }
 
     /**
@@ -52,8 +53,9 @@ class Kategori_transaksiController extends Controller
     public function edit(string $id)
     {
         $kategori_transaksi = Kategori_transaksi::find($id);
+        if (!$kategori_transaksi) return response()->json(null,404);
         // return view("kategori_transaksi.edit", compact("kategori_transaksi"));
-        return response()->json(($kategori_transaksi) ? $kategori_transaksi : null,404);
+        return response()->json($kategori_transaksi);
     }
 
     /**
@@ -62,9 +64,10 @@ class Kategori_transaksiController extends Controller
     public function update(Request $request, string $id)
     {
         $kategori_transaksi = Kategori_transaksi::find($id);
+        if (!$kategori_transaksi) return response()->json(null,404);
         $kategori_transaksi->update($request->all());
         // return redirect()->route("kategori_transaksi.index")->with("success","");
-        return response()->json(($kategori_transaksi) ? $kategori_transaksi : null,404);
+        return response()->json($kategori_transaksi)->with("success","");
     }
 
     /**
@@ -73,8 +76,9 @@ class Kategori_transaksiController extends Controller
     public function destroy(string $id)
     {
         $kategori_transaksi = Kategori_transaksi::find($id);
+        if (!$kategori_transaksi) return response()->json(null,404);
         $kategori_transaksi->delete();
         // return redirect()->route("kategori_transaksi.index")->with("success","");
-        return response()->json(($kategori_transaksi) ? $kategori_transaksi : null,404);
+        return response()->json(null)->with("success","");
     }
 }

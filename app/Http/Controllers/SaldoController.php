@@ -33,7 +33,7 @@ class SaldoController extends Controller
     {
         $saldo = Saldo::create($request->all());
         // return redirect()->route("saldo.index")->with("success","");
-        return response()->json($saldo);
+        return response()->json($saldo)->with("success","");
     }
 
     /**
@@ -42,8 +42,9 @@ class SaldoController extends Controller
     public function show(string $id)
     {
         $saldo = Saldo::find($id);
+        if (!$saldo) return response()->json(null,404);
         // return view("saldo.show", compact("saldo"));
-        return response()->json(($saldo) ? $saldo : null,404);
+        return response()->json($saldo);
     }
 
     /**
@@ -52,8 +53,9 @@ class SaldoController extends Controller
     public function edit(string $id)
     {
         $saldo = Saldo::find($id);
+        if (!$saldo) return response()->json(null,404);
         // return view("saldo.edit", compact("saldo"));
-        return response()->json(($saldo) ? $saldo : null,404);
+        return response()->json($saldo);
     }
 
     /**
@@ -62,9 +64,10 @@ class SaldoController extends Controller
     public function update(Request $request, string $id)
     {
         $saldo = Saldo::find($id);
+        if (!$saldo) return response()->json(null,404);
         $saldo->update($request->all());
         // return redirect()->route("saldo.index")->with("success","");
-        return response()->json(($saldo) ? $saldo : null,404);
+        return response()->json($saldo)->with("success","");
     }
 
     /**
@@ -73,8 +76,9 @@ class SaldoController extends Controller
     public function destroy(string $id)
     {
         $saldo = Saldo::find($id);
+        if (!$saldo) return response()->json(null,404);
         $saldo->delete();
         // return redirect()->route("saldo.index")->with("success","");
-        return response()->json(($saldo) ? $saldo : null,404);
+        return response()->json(null)->with("success","");
     }
 }

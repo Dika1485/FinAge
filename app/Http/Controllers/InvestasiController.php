@@ -33,7 +33,7 @@ class InvestasiController extends Controller
     {
         $investasi = Investasi::create($request->all());
         // return redirect()->route("investasi.index")->with("success","");
-        return response()->json($investasi);
+        return response()->json($investasi)->with("success","");
     }
 
     /**
@@ -42,8 +42,9 @@ class InvestasiController extends Controller
     public function show(string $id)
     {
         $investasi = Investasi::find($id);
+        if (!$investasi) return response()->json(null,404);
         // return view("investasi.show", compact("investasi"));
-        return response()->json(($investasi)? $investasi : null,404);
+        return response()->json($investasi);
     }
 
     /**
@@ -52,8 +53,9 @@ class InvestasiController extends Controller
     public function edit(string $id)
     {
         $investasi = Investasi::find($id);
+        if (!$investasi) return response()->json(null,404);
         // return view("investasi.edit", compact("investasi"));
-        return response()->json(($investasi)? $investasi : null,404);
+        return response()->json($investasi);
     }
 
     /**
@@ -62,9 +64,10 @@ class InvestasiController extends Controller
     public function update(Request $request, string $id)
     {
         $investasi = Investasi::find($id);
+        if (!$investasi) return response()->json(null,404);
         $investasi->update($request->all());
         // return redirect()->route("investasi.index")->with("success","");
-        return response()->json(($investasi)? $investasi : null,404);
+        return response()->json($investasi)->with("success","");
     }
 
     /**
@@ -73,8 +76,9 @@ class InvestasiController extends Controller
     public function destroy(string $id)
     {
         $investasi = Investasi::find($id);
+        if (!$investasi) return response()->json(null,404);
         $investasi->delete();
         // return redirect()->route("investasi.index")->with("success","");
-        return response()->json(($investasi)? $investasi : null,404);
+        return response()->json(null)->with("success","");
     }
 }

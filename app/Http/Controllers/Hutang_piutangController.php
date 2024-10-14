@@ -33,7 +33,7 @@ class Hutang_piutangController extends Controller
     {
         $hutang_piutang = Hutang_piutang::create($request->all());
         // return redirect()->route("hutang_piutang.index")->with("success","");
-        return response()->json($hutang_piutang);
+        return response()->json($hutang_piutang)->with("success","");
     }
 
     /**
@@ -42,8 +42,9 @@ class Hutang_piutangController extends Controller
     public function show(string $id)
     {
         $hutang_piutang = Hutang_piutang::find($id);
+        if (!$hutang_piutang) return response()->json(null,404);
         // return view("hutang_piutang.show", compact("hutang_piutang"));
-        return response()->json(($hutang_piutang) ? $hutang_piutang : null,404);
+        return response()->json($hutang_piutang);
     }
 
     /**
@@ -52,8 +53,9 @@ class Hutang_piutangController extends Controller
     public function edit(string $id)
     {
         $hutang_piutang = Hutang_piutang::find($id);
+        if (!$hutang_piutang) return response()->json(null,404);
         // return view("hutang_piutang.edit", compact("hutang_piutang"));
-        return response()->json(($hutang_piutang) ? $hutang_piutang : null,404);
+        return response()->json($hutang_piutang);
     }
 
     /**
@@ -62,9 +64,10 @@ class Hutang_piutangController extends Controller
     public function update(Request $request, string $id)
     {
         $hutang_piutang = Hutang_piutang::find($id);
+        if (!$hutang_piutang) return response()->json(null,404);
         $hutang_piutang->update($request->all());
         // return redirect()->route("hutang_piutang.index")->with("success","");
-        return response()->json(($hutang_piutang) ? $hutang_piutang : null,404);
+        return response()->json($hutang_piutang)->with("success","");
     }
 
     /**
@@ -73,8 +76,9 @@ class Hutang_piutangController extends Controller
     public function destroy(string $id)
     {
         $hutang_piutang = Hutang_piutang::find($id);
+        if (!$hutang_piutang) return response()->json(null,404);
         $hutang_piutang->delete();
         // return redirect()->route("hutang_piutang.index")->with("success","");
-        return response()->json(($hutang_piutang) ? $hutang_piutang : null,404);
+        return response()->json(null)->with("success","");
     }
 }

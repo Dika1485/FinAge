@@ -33,7 +33,7 @@ class PemasukanController extends Controller
     {
         $pemasukan = Pemasukan::create($request->all());
         // return redirect()->route("pemasukan.index")->with("success","");
-        return response()->json($pemasukan);
+        return response()->json($pemasukan)->with("success","");
     }
 
     /**
@@ -42,8 +42,9 @@ class PemasukanController extends Controller
     public function show(string $id)
     {
         $pemasukan = Pemasukan::find($id);
+        if (!$pemasukan) return response()->json(null,404);
         // return view("pemasukan.show", compact("pemasukan"));
-        return response()->json(($pemasukan) ? $pemasukan : null,404);
+        return response()->json($pemasukan);
     }
 
     /**
@@ -52,8 +53,9 @@ class PemasukanController extends Controller
     public function edit(string $id)
     {
         $pemasukan = Pemasukan::find($id);
+        if (!$pemasukan) return response()->json(null,404);
         // return view("pemasukan.edit", compact("pemasukan"));
-        return response()->json(($pemasukan) ? $pemasukan : null,404);
+        return response()->json($pemasukan);
     }
 
     /**
@@ -62,9 +64,10 @@ class PemasukanController extends Controller
     public function update(Request $request, string $id)
     {
         $pemasukan = Pemasukan::find($id);
+        if (!$pemasukan) return response()->json(null,404);
         $pemasukan->update($request->all());
         // return redirect()->route("pemasukan.index")->with("success","");
-        return response()->json(($pemasukan) ? $pemasukan : null,404);
+        return response()->json($pemasukan)->with("success","");
     }
 
     /**
@@ -73,8 +76,9 @@ class PemasukanController extends Controller
     public function destroy(string $id)
     {
         $pemasukan = Pemasukan::find($id);
+        if (!$pemasukan) return response()->json(null,404);
         $pemasukan->delete();
         // return redirect()->route("pemasukan.index")->with("success","");
-        return response()->json(($pemasukan) ? $pemasukan : null,404);
+        return response()->json(null)->with("success","");
     }
 }

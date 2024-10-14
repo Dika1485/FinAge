@@ -34,7 +34,7 @@ class Catatan_transaksiController extends Controller
     {
         $catatan_transaksi = Catatan_transaksi::create($request->all());
         // return redirect()->route("catatan_transaksi.index")->with("success","");
-        return response()->json($catatan_transaksi);
+        return response()->json($catatan_transaksi)->with("success","");
     }
 
     /**
@@ -43,8 +43,9 @@ class Catatan_transaksiController extends Controller
     public function show(string $id)
     {
         $catatan_transaksi = Catatan_transaksi::find($id);
+        if (!$catatan_transaksi) return response()->json(null,404);
         // return view("catatan_transaksi.show", compact("catatan_transaksi"));
-        return response()->json(($catatan_transaksi) ? $catatan_transaksi : null,404);
+        return response()->json($catatan_transaksi);
     }
 
     /**
@@ -53,8 +54,9 @@ class Catatan_transaksiController extends Controller
     public function edit(string $id)
     {
         $catatan_transaksi = Catatan_transaksi::find($id);
+        if (!$catatan_transaksi) return response()->json(null,404);
         // return view("catatan_transaksi.edit", compact("catatan_transaksi"));
-        return response()->json(($catatan_transaksi) ? $catatan_transaksi : null,404);
+        return response()->json($catatan_transaksi);
     }
 
     /**
@@ -63,9 +65,10 @@ class Catatan_transaksiController extends Controller
     public function update(Request $request, string $id)
     {
         $catatan_transaksi = Catatan_transaksi::find($id);
+        if (!$catatan_transaksi) return response()->json(null,404);
         $catatan_transaksi->update($request->all());
         // return redirect()->route("catatan_transaksi.index")->with("success","");
-        return response()->json(($catatan_transaksi) ? $catatan_transaksi : null,404);
+        return response()->json($catatan_transaksi)->with("success","");
     }
 
     /**
@@ -74,8 +77,9 @@ class Catatan_transaksiController extends Controller
     public function destroy(string $id)
     {
         $catatan_transaksi = Catatan_transaksi::find($id);
+        if (!$catatan_transaksi) return response()->json(null,404);
         $catatan_transaksi->delete();
         // return redirect()->route("catatan_transaksi.index")->with("success","");
-        return response()->json(($catatan_transaksi) ? $catatan_transaksi : null,404);
+        return response()->json(null)->with("success","");
     }
 }
