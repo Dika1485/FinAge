@@ -1,8 +1,22 @@
 ## About FinAge
 
-A financial management application built with Laravel provides a comprehensive solution for efficiently managing finances. With features like income and expense tracking, users can easily log all their financial transactions. The application also allows for the creation and management of budgets, offering detailed financial reports to help users understand their financial status. Additionally, notification and alert features help keep spending within budget limits. Users can manage their investments and project future financial trends based on historical data. The security of user data is ensured through encryption and regular backups, while multi-platform access allows users to access the application from various devices. Utilizing technologies such as Laravel for the backend, and MySQL for database management, this application offers a robust and scalable financial management solution.
+The FinAge is the backend for the FinAge financial management application, developed with Laravel to deliver a reliable and scalable solution. This API facilitates essential CRUD operations for various financial records, including income, expenses, budgets, investments, and more.
 
+### Features
+- **Create**: Endpoints to add new financial records.
+- **Read**: Endpoints to view detailed financial records.
+- **Update**: Endpoints to modify existing financial records.
+- **Delete**: Endpoints to remove financial records.
+
+The API supports secure data handling with encryption and ensures data integrity through regular backups. Designed for multi-platform access, it enables users to manage their finances from any device seamlessly.
+
+## Project Repositories
+
+- **API Repository**<br>The repository for the FinAge API project can be found at: <a href="https://github.com/Dika1485/FinAge">GitHub - FinAge</a>. Please refer to this link for the full codebase, installation instructions, and documentation.
+- **Application Repository**<br>The repository for the FinAge application project can be found at: <a href="https://github.com/Dika1485/finageapp">GitHub - FinAge App</a>. This link contains the full codebase and instructions for setting up the application.
+</li>
+</ul>
 
 ## Developer
 
-Priandika Ratmadani Anugrah
+- <a href="https://github.com/Dika1485">Dika1485</a> - Priandika Ratmadani Anugrah

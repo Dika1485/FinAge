@@ -1,27 +1,30 @@
 <?php
 
-use App\Http\Controllers\AnggaranController;
-use App\Http\Controllers\Catatan_transaksiController;
-use App\Http\Controllers\Hutang_piutangController;
-use App\Http\Controllers\InvestasiController;
-use App\Http\Controllers\Kategori_transaksiController;
-use App\Http\Controllers\Laporan_bulananController;
-use App\Http\Controllers\Mata_uangController;
-use App\Http\Controllers\PemasukanController;
-use App\Http\Controllers\PengeluaranController;
-use App\Http\Controllers\SaldoController;
+use App\Http\Controllers\BudgetController;
+use App\Http\Controllers\TransactionNoteController;
+use App\Http\Controllers\DebtCreditController;
+use App\Http\Controllers\InvestmentController;
+use App\Http\Controllers\TransactionCategoryController;
+use App\Http\Controllers\MonthlyReportController;
+use App\Http\Controllers\CurrencyController;
+use App\Http\Controllers\IncomeController;
+use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\BalanceController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('anggaran',AnggaranController::class);
-Route::resource('catatan_transaksi',Catatan_transaksiController::class);
-Route::resource('hutang_piutang',Hutang_piutangController::class);
-Route::resource('investasi',InvestasiController::class);
-Route::resource('kategori_transaksi',Kategori_transaksiController::class);
-Route::resource('laporan_bulanan',Laporan_bulananController::class);
-Route::resource('mata_uang',Mata_uangController::class);
-Route::resource('pemasukan',PemasukanController::class);
-Route::resource('pengeluaran',PengeluaranController::class);
-Route::resource('saldo',SaldoController::class);
+Route::resource('budget', BudgetController::class);
+Route::resource('transaction_note', TransactionNoteController::class);
+Route::resource('debt_credit', DebtCreditController::class);
+Route::resource('investment', InvestmentController::class);
+Route::resource('transaction_category', TransactionCategoryController::class);
+Route::resource('monthly_report', MonthlyReportController::class);
+Route::resource('currency', CurrencyController::class);
+Route::resource('income', IncomeController::class);
+Route::resource('expense', ExpenseController::class);
+Route::resource('balance', BalanceController::class);
+Route::get('/token', function () {
+    return csrf_token(); 
+});

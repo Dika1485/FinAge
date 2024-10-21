@@ -14,16 +14,16 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory(10)->create();
-        $this->call(PemasukanSeeder::class);
-        $this->call(PengeluaranSeeder::class);
-        $this->call(Kategori_transaksiSeeder::class);
-        $this->call(SaldoSeeder::class);
-        $this->call(InvestasiSeeder::class);
-        $this->call(Hutang_piutangSeeder::class);
-        $this->call(AnggaranSeeder::class);
-        $this->call(Laporan_bulananSeeder::class);
-        $this->call(Catatan_transaksiSeeder::class);
-        $this->call(Mata_uangSeeder::class);
+        $this->call(BalanceSeeder::class);
+        $this->call(BudgetSeeder::class);
+        $this->call(CurrencySeeder::class);
+        $this->call(DebtCreditSeeder::class);
+        $this->call(ExpenseSeeder::class);
+        $this->call(IncomeSeeder::class);
+        $this->call(InvestmentSeeder::class);
+        $this->call(MonthlyReportSeeder::class);
+        $this->call(TransactionCategorySeeder::class);
+        $this->call(TransactionNoteSeeder::class);
 
         // User::factory()->create([
         //     'name' => 'Test User',
