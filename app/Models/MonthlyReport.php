@@ -9,4 +9,5 @@ class MonthlyReport extends Model
 {
     use HasFactory;
     protected $table = 'monthly_report';
+    protected $guarded = [];
 }

@@ -42,7 +42,8 @@ class ExpenseController extends Controller
     public function show(string $id)
     {
         $expense = Expense::find($id);
-        if (!$expense) return response()->json(null,404);
+        if (!$expense)
+            return response()->json(null, 404);
         // return view("expense.show", compact("expense"));
         return response()->json($expense);
     }
@@ -53,7 +54,8 @@ class ExpenseController extends Controller
     public function edit(string $id)
     {
         $expense = Expense::find($id);
-        if (!$expense) return response()->json(null,404);
+        if (!$expense)
+            return response()->json(null, 404);
         // return view("expense.edit", compact("expense"));
         return response()->json($expense);
     }
@@ -64,10 +66,11 @@ class ExpenseController extends Controller
     public function update(Request $request, string $id)
     {
         $expense = Expense::find($id);
-        if (!$expense) return response()->json(null,404);
+        if (!$expense)
+            return response()->json(null, 404);
         $expense->update($request->all());
         // return redirect()->route("expense.index")->with("success","");
-        return response()->json($expense)->with("success","");
+        return response()->json($expense);
     }
 
     /**
@@ -76,9 +79,10 @@ class ExpenseController extends Controller
     public function destroy(string $id)
     {
         $expense = Expense::find($id);
-        if (!$expense) return response()->json(null,404);
+        if (!$expense)
+            return response()->json(null, 404);
         $expense->delete();
         // return redirect()->route("expense.index")->with("success","");
-        return response()->json(null)->with("success","");
+        return response()->json(null);
     }
 }

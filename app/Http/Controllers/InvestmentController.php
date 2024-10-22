@@ -33,7 +33,7 @@ class InvestmentController extends Controller
     {
         $investment = Investment::create($request->all());
         // return redirect()->route("investment.index")->with("success","");
-        return response()->json($investment)->with("success","");
+        return response()->json($investment);
     }
 
     /**
@@ -42,7 +42,8 @@ class InvestmentController extends Controller
     public function show(string $id)
     {
         $investment = Investment::find($id);
-        if (!$investment) return response()->json(null,404);
+        if (!$investment)
+            return response()->json(null, 404);
         // return view("investment.show", compact("investment"));
         return response()->json($investment);
     }
@@ -53,7 +54,8 @@ class InvestmentController extends Controller
     public function edit(string $id)
     {
         $investment = Investment::find($id);
-        if (!$investment) return response()->json(null,404);
+        if (!$investment)
+            return response()->json(null, 404);
         // return view("investment.edit", compact("investment"));
         return response()->json($investment);
     }
@@ -64,10 +66,11 @@ class InvestmentController extends Controller
     public function update(Request $request, string $id)
     {
         $investment = Investment::find($id);
-        if (!$investment) return response()->json(null,404);
+        if (!$investment)
+            return response()->json(null, 404);
         $investment->update($request->all());
         // return redirect()->route("investment.index")->with("success","");
-        return response()->json($investment)->with("success","");
+        return response()->json($investment);
     }
 
     /**
@@ -76,9 +79,10 @@ class InvestmentController extends Controller
     public function destroy(string $id)
     {
         $investment = Investment::find($id);
-        if (!$investment) return response()->json(null,404);
+        if (!$investment)
+            return response()->json(null, 404);
         $investment->delete();
         // return redirect()->route("investment.index")->with("success","");
-        return response()->json(null)->with("success","");
+        return response()->json(null);
     }
 }

@@ -32,8 +32,8 @@ class CurrencyController extends Controller
     public function store(Request $request)
     {
         $currency = Currency::create($request->all());
-        // return redirect()->route("currency.index")->with("success","");
-        return response()->json($currency)->with("success","");
+        // return redirect()->route("currency.index")->with("success", "");
+        return response()->json($currency);
     }
 
     /**
@@ -42,7 +42,8 @@ class CurrencyController extends Controller
     public function show(string $id)
     {
         $currency = Currency::find($id);
-        if (!$currency) return response()->json(null,404);
+        if (!$currency)
+            return response()->json(null, 404);
         // return view("currency.show", compact("currency"));
         return response()->json($currency);
     }
@@ -53,7 +54,8 @@ class CurrencyController extends Controller
     public function edit(string $id)
     {
         $currency = Currency::find($id);
-        if (!$currency) return response()->json(null,404);
+        if (!$currency)
+            return response()->json(null, 404);
         // return view("currency.edit", compact("currency"));
         return response()->json($currency);
     }
@@ -64,10 +66,11 @@ class CurrencyController extends Controller
     public function update(Request $request, string $id)
     {
         $currency = Currency::find($id);
-        if (!$currency) return response()->json(null,404);
+        if (!$currency)
+            return response()->json(null, 404);
         $currency->update($request->all());
         // return redirect()->route("currency.index")->with("success","");
-        return response()->json($currency)->with("success","");
+        return response()->json($currency);
     }
 
     /**
@@ -76,9 +79,10 @@ class CurrencyController extends Controller
     public function destroy(string $id)
     {
         $currency = Currency::find($id);
-        if (!$currency) return response()->json(null,404);
+        if (!$currency)
+            return response()->json(null, 404);
         $currency->delete();
         // return redirect()->route("currency.index")->with("success","");
-        return response()->json(null)->with("success","");
+        return response()->json();
     }
 }

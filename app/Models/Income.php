@@ -9,4 +9,5 @@ class Income extends Model
 {
     use HasFactory;
     protected $table = 'income';
+    protected $guarded = [];
 }

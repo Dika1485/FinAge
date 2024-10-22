@@ -33,7 +33,7 @@ class BalanceController extends Controller
     {
         $balance = Balance::create($request->all());
         // return redirect()->route("balance.index")->with("success","");
-        return response()->json($balance)->with("success","");
+        return response()->json($balance);
     }
 
     /**
@@ -42,7 +42,8 @@ class BalanceController extends Controller
     public function show(string $id)
     {
         $balance = Balance::find($id);
-        if (!$balance) return response()->json(null,404);
+        if (!$balance)
+            return response()->json(null, 404);
         // return view("balance.show", compact("balance"));
         return response()->json($balance);
     }
@@ -53,7 +54,8 @@ class BalanceController extends Controller
     public function edit(string $id)
     {
         $balance = Balance::find($id);
-        if (!$balance) return response()->json(null,404);
+        if (!$balance)
+            return response()->json(null, 404);
         // return view("balance.edit", compact("balance"));
         return response()->json($balance);
     }
@@ -64,10 +66,11 @@ class BalanceController extends Controller
     public function update(Request $request, string $id)
     {
         $balance = Balance::find($id);
-        if (!$balance) return response()->json(null,404);
+        if (!$balance)
+            return response()->json(null, 404);
         $balance->update($request->all());
         // return redirect()->route("balance.index")->with("success","");
-        return response()->json($balance)->with("success","");
+        return response()->json($balance);
     }
 
     /**
@@ -76,9 +79,10 @@ class BalanceController extends Controller
     public function destroy(string $id)
     {
         $balance = Balance::find($id);
-        if (!$balance) return response()->json(null,404);
+        if (!$balance)
+            return response()->json(null, 404);
         $balance->delete();
         // return redirect()->route("balance.index")->with("success","");
-        return response()->json(null)->with("success","");
+        return response()->json(null);
     }
 }

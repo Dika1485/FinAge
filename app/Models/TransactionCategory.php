@@ -9,4 +9,5 @@ class TransactionCategory extends Model
 {
     use HasFactory;
     protected $table = 'transaction_category';
+    protected $guarded = [];
 }

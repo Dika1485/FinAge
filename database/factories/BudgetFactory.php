@@ -17,9 +17,9 @@ class BudgetFactory extends Factory
     public function definition(): array
     {
         return [
-            "budget_item"=> $this->faker->word,
-            "allocated"=> $this->faker->numberBetween(1,10),
-            "spent"=> $this->faker->randomNumber(),
+            "budget_item" => $this->faker->word,
+            "allocated" => $this->faker->numberBetween(1, 10),
+            "spent" => $this->faker->randomNumber(),
         ];
     }
 }

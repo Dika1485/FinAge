@@ -9,4 +9,5 @@ class DebtCredit extends Model
 {
     use HasFactory;
     protected $table = 'debt_credit';
+    protected $guarded = [];
 }

@@ -33,7 +33,7 @@ class IncomeController extends Controller
     {
         $income = Income::create($request->all());
         // return redirect()->route("income.index")->with("success","");
-        return response()->json($income)->with("success","");
+        return response()->json($income);
     }
 
     /**
@@ -42,7 +42,8 @@ class IncomeController extends Controller
     public function show(string $id)
     {
         $income = Income::find($id);
-        if (!$income) return response()->json(null,404);
+        if (!$income)
+            return response()->json(null, 404);
         // return view("income.show", compact("income"));
         return response()->json($income);
     }
@@ -53,7 +54,8 @@ class IncomeController extends Controller
     public function edit(string $id)
     {
         $income = Income::find($id);
-        if (!$income) return response()->json(null,404);
+        if (!$income)
+            return response()->json(null, 404);
         // return view("income.edit", compact("income"));
         return response()->json($income);
     }
@@ -64,10 +66,11 @@ class IncomeController extends Controller
     public function update(Request $request, string $id)
     {
         $income = Income::find($id);
-        if (!$income) return response()->json(null,404);
+        if (!$income)
+            return response()->json(null, 404);
         $income->update($request->all());
         // return redirect()->route("income.index")->with("success","");
-        return response()->json($income)->with("success","");
+        return response()->json($income);
     }
 
     /**
@@ -76,9 +79,10 @@ class IncomeController extends Controller
     public function destroy(string $id)
     {
         $income = Income::find($id);
-        if (!$income) return response()->json(null,404);
+        if (!$income)
+            return response()->json(null, 404);
         $income->delete();
         // return redirect()->route("income.index")->with("success","");
-        return response()->json(null)->with("success","");
+        return response()->json(null);
     }
 }

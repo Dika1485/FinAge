@@ -9,4 +9,5 @@ class Balance extends Model
 {
     use HasFactory;
     protected $table = 'balance';
+    protected $guarded = [];
 }

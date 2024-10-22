@@ -33,7 +33,7 @@ class DebtCreditController extends Controller
     {
         $debt_credit = DebtCredit::create($request->all());
         // return redirect()->route("debt_credit.index")->with("success","");
-        return response()->json($debt_credit)->with("success","");
+        return response()->json($debt_credit);
     }
 
     /**
@@ -42,7 +42,8 @@ class DebtCreditController extends Controller
     public function show(string $id)
     {
         $debt_credit = DebtCredit::find($id);
-        if (!$debt_credit) return response()->json(null,404);
+        if (!$debt_credit)
+            return response()->json(null, 404);
         // return view("debt_credit.show", compact("debt_credit"));
         return response()->json($debt_credit);
     }
@@ -53,7 +54,8 @@ class DebtCreditController extends Controller
     public function edit(string $id)
     {
         $debt_credit = DebtCredit::find($id);
-        if (!$debt_credit) return response()->json(null,404);
+        if (!$debt_credit)
+            return response()->json(null, 404);
         // return view("debt_credit.edit", compact("debt_credit"));
         return response()->json($debt_credit);
     }
@@ -64,10 +66,11 @@ class DebtCreditController extends Controller
     public function update(Request $request, string $id)
     {
         $debt_credit = DebtCredit::find($id);
-        if (!$debt_credit) return response()->json(null,404);
+        if (!$debt_credit)
+            return response()->json(null, 404);
         $debt_credit->update($request->all());
         // return redirect()->route("debt_credit.index")->with("success","");
-        return response()->json($debt_credit)->with("success","");
+        return response()->json($debt_credit);
     }
 
     /**
@@ -76,9 +79,10 @@ class DebtCreditController extends Controller
     public function destroy(string $id)
     {
         $debt_credit = DebtCredit::find($id);
-        if (!$debt_credit) return response()->json(null,404);
+        if (!$debt_credit)
+            return response()->json(null, 404);
         $debt_credit->delete();
         // return redirect()->route("debt_credit.index")->with("success","");
-        return response()->json(null)->with("success","");
+        return response()->json(null);
     }
 }

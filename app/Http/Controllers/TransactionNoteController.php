@@ -34,7 +34,7 @@ class TransactionNoteController extends Controller
     {
         $transaction_note = TransactionNote::create($request->all());
         // return redirect()->route("transaction_note.index")->with("success","");
-        return response()->json($transaction_note)->with("success","");
+        return response()->json($transaction_note);
     }
 
     /**
@@ -43,7 +43,8 @@ class TransactionNoteController extends Controller
     public function show(string $id)
     {
         $transaction_note = TransactionNote::find($id);
-        if (!$transaction_note) return response()->json(null,404);
+        if (!$transaction_note)
+            return response()->json(null, 404);
         // return view("transaction_note.show", compact("transaction_note"));
         return response()->json($transaction_note);
     }
@@ -54,7 +55,8 @@ class TransactionNoteController extends Controller
     public function edit(string $id)
     {
         $transaction_note = TransactionNote::find($id);
-        if (!$transaction_note) return response()->json(null,404);
+        if (!$transaction_note)
+            return response()->json(null, 404);
         // return view("transaction_note.edit", compact("transaction_note"));
         return response()->json($transaction_note);
     }
@@ -65,10 +67,11 @@ class TransactionNoteController extends Controller
     public function update(Request $request, string $id)
     {
         $transaction_note = TransactionNote::find($id);
-        if (!$transaction_note) return response()->json(null,404);
+        if (!$transaction_note)
+            return response()->json(null, 404);
         $transaction_note->update($request->all());
         // return redirect()->route("transaction_note.index")->with("success","");
-        return response()->json($transaction_note)->with("success","");
+        return response()->json($transaction_note);
     }
 
     /**
@@ -77,9 +80,10 @@ class TransactionNoteController extends Controller
     public function destroy(string $id)
     {
         $transaction_note = TransactionNote::find($id);
-        if (!$transaction_note) return response()->json(null,404);
+        if (!$transaction_note)
+            return response()->json(null, 404);
         $transaction_note->delete();
         // return redirect()->route("transaction_note.index")->with("success","");
-        return response()->json(null)->with("success","");
+        return response()->json(null);
     }
 }

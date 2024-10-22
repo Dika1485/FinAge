@@ -17,9 +17,9 @@ class CurrencyFactory extends Factory
     public function definition(): array
     {
         return [
-            "currency"=> $this->faker->numberBetween(1,0),
-            "exchange_rate"=> $this->faker->numberBetween(1,0),
-            "symbol"=> $this->faker->randomElement(['Rp.','$']),
+            "currency" => $this->faker->numberBetween(1, 0),
+            "exchange_rate" => $this->faker->numberBetween(1, 0),
+            "symbol" => $this->faker->randomElement(['Rp.', '$']),
         ];
     }
 }

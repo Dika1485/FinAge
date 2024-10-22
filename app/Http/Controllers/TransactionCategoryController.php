@@ -33,7 +33,7 @@ class TransactionCategoryController extends Controller
     {
         $transaction_category = TransactionCategory::create($request->all());
         // return redirect()->route("transaction_category.index")->with("success","");
-        return response()->json($transaction_category)->with("success","");
+        return response()->json($transaction_category);
     }
 
     /**
@@ -42,7 +42,8 @@ class TransactionCategoryController extends Controller
     public function show(string $id)
     {
         $transaction_category = TransactionCategory::find($id);
-        if (!$transaction_category) return response()->json(null,404);
+        if (!$transaction_category)
+            return response()->json(null, 404);
         // return view("transaction_category.show", compact("transaction_category"));
         return response()->json($transaction_category);
     }
@@ -53,7 +54,8 @@ class TransactionCategoryController extends Controller
     public function edit(string $id)
     {
         $transaction_category = TransactionCategory::find($id);
-        if (!$transaction_category) return response()->json(null,404);
+        if (!$transaction_category)
+            return response()->json(null, 404);
         // return view("transaction_category.edit", compact("transaction_category"));
         return response()->json($transaction_category);
     }
@@ -64,10 +66,11 @@ class TransactionCategoryController extends Controller
     public function update(Request $request, string $id)
     {
         $transaction_category = TransactionCategory::find($id);
-        if (!$transaction_category) return response()->json(null,404);
+        if (!$transaction_category)
+            return response()->json(null, 404);
         $transaction_category->update($request->all());
         // return redirect()->route("transaction_category.index")->with("success","");
-        return response()->json($transaction_category)->with("success","");
+        return response()->json($transaction_category);
     }
 
     /**
@@ -76,9 +79,10 @@ class TransactionCategoryController extends Controller
     public function destroy(string $id)
     {
         $transaction_category = TransactionCategory::find($id);
-        if (!$transaction_category) return response()->json(null,404);
+        if (!$transaction_category)
+            return response()->json(null, 404);
         $transaction_category->delete();
         // return redirect()->route("transaction_category.index")->with("success","");
-        return response()->json(null)->with("success","");
+        return response()->json(null);
     }
 }

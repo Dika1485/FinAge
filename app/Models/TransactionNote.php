@@ -9,4 +9,5 @@ class TransactionNote extends Model
 {
     use HasFactory;
     protected $table = 'transaction_note';
+    protected $guarded = [];
 }

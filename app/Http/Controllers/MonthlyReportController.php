@@ -32,7 +32,8 @@ class MonthlyReportController extends Controller
     public function show(string $id)
     {
         $monthly_report = MonthlyReport::find($id);
-        if (!$monthly_report) return response()->json(null,404);
+        if (!$monthly_report)
+            return response()->json(null, 404);
         // return view("monthly_report.show", compact("monthly_report"));
         return response()->json($monthly_report);
     }
@@ -43,7 +44,8 @@ class MonthlyReportController extends Controller
     public function edit(string $id)
     {
         $monthly_report = MonthlyReport::find($id);
-        if (!$monthly_report) return response()->json(null,404);
+        if (!$monthly_report)
+            return response()->json(null, 404);
         // return view("monthly_report.edit", compact("monthly_report"));
         return response()->json($monthly_report);
     }
@@ -54,10 +56,11 @@ class MonthlyReportController extends Controller
     public function update(Request $request, string $id)
     {
         $monthly_report = MonthlyReport::find($id);
-        if (!$monthly_report) return response()->json(null,404);
+        if (!$monthly_report)
+            return response()->json(null, 404);
         $monthly_report->update($request->all());
         // return redirect()->route("monthly_report.index")->with("success","");
-        return response()->json($monthly_report)->with("success","");
+        return response()->json($monthly_report);
     }
 
     /**
@@ -66,9 +69,10 @@ class MonthlyReportController extends Controller
     public function destroy(string $id)
     {
         $monthly_report = MonthlyReport::find($id);
-        if (!$monthly_report) return response()->json(null,404);
+        if (!$monthly_report)
+            return response()->json(null, 404);
         $monthly_report->delete();
         // return redirect()->route("monthly_report.index")->with("success","");
-        return response()->json(null)->with("success","");
+        return response()->json(null);
     }
 }

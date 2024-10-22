@@ -34,7 +34,7 @@ class BudgetController extends Controller
     {
         $budget = Budget::create($request->all());
         // return redirect()->route("budget.index")->with("success","");
-        return response()->json($budget)->with("success","");
+        return response()->json($budget);
     }
 
     /**
@@ -43,7 +43,8 @@ class BudgetController extends Controller
     public function show(string $id)
     {
         $budget = Budget::find($id);
-        if (!$budget) return response()->json(null,404);
+        if (!$budget)
+            return response()->json(null, 404);
         // return view("budget.show", compact("budget"));
         return response()->json($budget);
     }
@@ -54,7 +55,8 @@ class BudgetController extends Controller
     public function edit(string $id)
     {
         $budget = Budget::find($id);
-        if (!$budget) return response()->json(null,404);
+        if (!$budget)
+            return response()->json(null, 404);
         // return view("budget.edit", compact("budget"));
         return response()->json($budget);
     }
@@ -65,10 +67,11 @@ class BudgetController extends Controller
     public function update(Request $request, string $id)
     {
         $budget = Budget::find($id);
-        if (!$budget) return response()->json(null,404);
+        if (!$budget)
+            return response()->json(null, 404);
         $budget->update($request->all());
         // return redirect()->route("budget.index")->with("success","");
-        return response()->json($budget)->with("success","");
+        return response()->json($budget);
     }
 
     /**
@@ -77,9 +80,10 @@ class BudgetController extends Controller
     public function destroy(string $id)
     {
         $budget = Budget::find($id);
-        if (!$budget) return response()->json(null,404);
+        if (!$budget)
+            return response()->json(null, 404);
         $budget->delete();
         // return redirect()->route("budget.index")->with("success","");
-        return response()->json(null)->with("success","");
+        return response()->json(null);
     }
 }
